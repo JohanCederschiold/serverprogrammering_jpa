@@ -17,6 +17,7 @@ import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
 
+
 @Entity
 public class Tutor {
 	
@@ -49,6 +50,7 @@ public class Tutor {
 	public Tutor(String tutorId, String name, int salary) {
 		super();
 		instantiateSets();
+		System.out.println("The set is " + this.students == null);
 		this.tutorId = tutorId;
 		this.name = name;
 		this.salary = salary;
@@ -56,13 +58,16 @@ public class Tutor {
 
 
 	private void instantiateSets() {
-	// TODO Auto-generated method stub
-	
-}
+		students = new HashSet<Student>();
+		subjects = new HashSet<Subject>();
+		
+	}
 
 
 	public Tutor() {
+		
 		super();
+		instantiateSets();
 	}
 
 

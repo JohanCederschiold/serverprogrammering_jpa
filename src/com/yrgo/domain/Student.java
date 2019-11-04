@@ -39,8 +39,11 @@ public class Student
 
     public Student(String enrollmentID, String name) {
 		super();
+		System.out.println("Constructor called");
 		this.enrollmentID = enrollmentID;
 		this.name = name;
+		System.out.println(this.enrollmentID);
+		System.out.println(this.name);
 	}
 
 
