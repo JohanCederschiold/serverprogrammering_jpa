@@ -140,6 +140,14 @@ public class Tutor {
 		this.subjects.add(subjects);
 	}
 	
+	public void createStudentAndAddToTechingGroup(String studentName, String enrollmentId ) {
+		
+		Student student = new Student(studentName, enrollmentId);
+		student.setTutor(this);
+		this.addStudentToGroup(student);
+
+	}
+	
 	
 	
 	
