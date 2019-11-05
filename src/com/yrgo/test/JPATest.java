@@ -55,11 +55,14 @@ public class JPATest {
 //		Student student = new Student("1-PET-2018", "Pontus Petersson");
 //		em.persist(student);
 		
-		Student student = em.find(Student.class, 1L);
-		if (student.getAdress() != null ) {
-			System.out.println(student);
-		}
-		System.out.println(student);
+//		Student student = em.find(Student.class, 1L);
+//		if (student.getAdress() != null ) {
+//			System.out.println(student);
+//		}
+//		System.out.println(student);
+		
+		Student st1 = new Student("1-SAN-2019", "Eva  Sands", "street-1", "London", "4455");
+		em.persist(st1);
 		
 		
 		

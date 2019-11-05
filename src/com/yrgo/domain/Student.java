@@ -10,10 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="Tbl_Student")
+@SecondaryTable(name = "Tbl_Adress")
 public class Student
 {
 	
@@ -23,8 +25,18 @@ public class Student
     private String enrollmentID;
     private String name;
     
-    @Embedded
-    private Adress adress;
+//    @Embedded
+//    private Adress adress;
+    
+    @Column (table = "Tbl_Adress")
+    private String adress;
+    
+    @Column (table = "Tbl_Adress")
+    private String city;
+    
+    @Column (table = "Tbl_Adress")
+    private String zipcode;
+    
     
     @ManyToOne
     private Tutor tutor;
@@ -43,10 +55,18 @@ public class Student
     public Student(String enrollmentId, String name, String street, String city, String zipCode) {
     	this.enrollmentID = enrollmentId;
     	this.name = name;
-    	adress = new Adress(street, city, zipCode);
+//    	adress = new Adress(street, city, zipCode);
+    	this.adress = street;
+    	this.city = city;
+    	this.zipcode = zipCode;
     }
+    
+    
 
-    public Student(String enrollmentID, String name) {
+
+
+
+	public Student(String enrollmentID, String name) {
 		super();
 		System.out.println("Constructor called");
 		this.enrollmentID = enrollmentID;
@@ -72,7 +92,9 @@ public class Student
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", enrollmentID=" + enrollmentID + " lives at adress " + adress +
+		return "Student [id=" + id + ", enrollmentID=" + enrollmentID + " lives at adress " + 
+//	adress 
+//	+
 				", name=" + name 
 				+ "]";
 	}
@@ -156,13 +178,13 @@ public class Student
 		this.tutor = tutor;
 	}
 
-	public Adress getAdress() {
-		return adress;
-	}
-
-	public void setAdress(Adress adress) {
-		this.adress = adress;
-	}
+//	public Adress getAdress() {
+//		return adress;
+//	}
+//
+//	public void setAdress(Adress adress) {
+//		this.adress = adress;
+//	}
 	
 	
 
