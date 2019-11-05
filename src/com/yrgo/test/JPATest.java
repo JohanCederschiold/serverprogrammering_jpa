@@ -47,12 +47,27 @@ public class JPATest {
 //		t1.createStudentAndAddToTechingGroup("Student1", "1-STU-2019");
 //		t1.createStudentAndAddToTechingGroup("Student2", "2-STU-2018");
 //		t1.createStudentAndAddToTechingGroup("Student3", "3-STU-2017");
-//
+
+//		Solution with cascading and embedded adress.
+//		t1.createStudentAndAddToTechingGroup("Eva  Sands", "1-SAN-2019", "street-1", "London", "4455");
+//		t1.createStudentAndAddToTechingGroup("Sam Everest", "2-EVE-2018", "street-2", "Paris", "6767");
+
+//		Student student = new Student("1-PET-2018", "Pontus Petersson");
+//		em.persist(student);
+		
+		Student student = em.find(Student.class, 1L);
+		if (student.getAdress() != null ) {
+			System.out.println(student);
+		}
+		System.out.println(student);
+		
+		
+		
 //		Set<Student> allStudents = t1.getStudents();
 //		System.out.println(allStudents.size());
-		
-		Tutor t1 = em.find(Tutor.class, 1L); 
-		em.remove(t1); 
+
+//		Tutor t1 = em.find(Tutor.class, 1L); 
+//		em.remove(t1); 
 
 		tx.commit();
 		em.close();

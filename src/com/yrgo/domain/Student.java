@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +23,9 @@ public class Student
     private String enrollmentID;
     private String name;
     
+    @Embedded
+    private Adress adress;
+    
     @ManyToOne
     private Tutor tutor;
     
@@ -30,16 +34,17 @@ public class Student
     private Integer numberOfCourses;
 
 
-    public Student(String name, Tutor tutor)
-    {
-    	this.name = name;
-    	this.tutor = tutor;
-    }
-    
-    
-    
-    
+//    public Student(String name, Tutor tutor)
+//    {
+//    	this.name = name;
+//    	this.tutor = tutor;
+//    }
 
+    public Student(String enrollmentId, String name, String street, String city, String zipCode) {
+    	this.enrollmentID = enrollmentId;
+    	this.name = name;
+    	adress = new Adress(street, city, zipCode);
+    }
 
     public Student(String enrollmentID, String name) {
 		super();
@@ -51,41 +56,26 @@ public class Student
 	}
 
 
-
-
-
-
 	public Student() {
 		super();
 	}
-    
-    
-
-
-    
 
 
 	public int getNumberOfCourses() {
 		return numberOfCourses;
 	}
 
-
-
-
 	public void setNumberOfCourses(int numberOfCourses) {
 		this.numberOfCourses = numberOfCourses;
 	}
 
 
-
-
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", enrollmentID=" + enrollmentID + 
+		return "Student [id=" + id + ", enrollmentID=" + enrollmentID + " lives at adress " + adress +
 				", name=" + name 
 				+ "]";
 	}
-
 
 
 
@@ -103,29 +93,23 @@ public class Student
 	}
 
 
-
-
 	public String getEnrollmentID() {
 		return enrollmentID;
 	}
-
 
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setEnrollmentID(String enrollmentID) {
 		this.enrollmentID = enrollmentID;
 	}
 
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 
 	@Override
@@ -135,10 +119,6 @@ public class Student
 		result = prime * result + ((enrollmentID == null) ? 0 : enrollmentID.hashCode());
 		return result;
 	}
-
-
-
-
 
 
 	@Override
@@ -175,6 +155,16 @@ public class Student
 	public void setTutor(Tutor tutor) {
 		this.tutor = tutor;
 	}
+
+	public Adress getAdress() {
+		return adress;
+	}
+
+	public void setAdress(Adress adress) {
+		this.adress = adress;
+	}
+	
+	
 
 
 	
