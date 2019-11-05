@@ -22,6 +22,9 @@ public class Student
     private String enrollmentID;
     private String name;
     
+    @ManyToOne
+    private Tutor tutor;
+    
     
     @Column(name="All_courses")
     private Integer numberOfCourses;
@@ -30,6 +33,7 @@ public class Student
     public Student(String name, Tutor tutor)
     {
     	this.name = name;
+    	this.tutor = tutor;
     }
     
     
@@ -155,6 +159,25 @@ public class Student
 	}
 
 
+
+
+
+
+	public Tutor getTutor() {
+		return tutor;
+	}
+
+
+
+
+
+
+	public void setTutor(Tutor tutor) {
+		this.tutor = tutor;
+	}
+
+
+	
 
 
 //	public void alocateTutor(Tutor tutor) {

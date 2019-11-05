@@ -38,9 +38,9 @@ public class JPATest {
 		t1.addStudentToGroup(s2);
 		Student s3 = new Student("Student3", "3-STU-2017");
 		t1.addStudentToGroup(s3);
-		em.persist(s1);
-		em.persist(s2);
-		em.persist(s3);
+//		em.persist(s1);
+//		em.persist(s2);
+//		em.persist(s3);
 		Set<Student> allStudents = t1.getStudents();
 		System.out.println(allStudents.size());
 

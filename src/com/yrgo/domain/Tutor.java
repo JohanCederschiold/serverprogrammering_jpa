@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Tutor {
 	private int salary;
 	
 	
-	@ManyToMany
+	@OneToMany(mappedBy = "tutor", cascade = CascadeType.PERSIST)
 	private Set<Student>students;
 	
 	@ManyToMany
@@ -124,6 +125,7 @@ public class Tutor {
 
 
 	public void addStudentToGroup(Student student) {
+		student.setTutor(this);
 		this.students.add(student);
 	}
 
