@@ -78,6 +78,13 @@ public class Subject {
 	public void instantiateSet() {
 		this.tutorsTeaching = new HashSet<Tutor>();
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "Subject [subjectName=" + subjectName + ", numberOfSemesters=" + numberOfSemesters + "]";
+	}
 	
 	
 	

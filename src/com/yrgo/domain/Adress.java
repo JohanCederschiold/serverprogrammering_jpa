@@ -2,7 +2,7 @@ package com.yrgo.domain;
 
 import javax.persistence.Embeddable;
 
-//@Embeddable
+@Embeddable
 public class Adress {
 	
 	
