@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,16 +15,14 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Tbl_Student")
+@DiscriminatorValue(value="S")
+//@Table(name="Tbl_Student")
 //@SecondaryTable(name = "Tbl_Adress")
-public class Student
+public class Student extends Person
 {
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+
     private String enrollmentID;
-    private String name;
+
     
     @Embedded
     private Adress adress;
@@ -53,8 +52,8 @@ public class Student
 //    }
 
     public Student(String enrollmentId, String name, String street, String city, String zipCode) {
+    	super(name);
     	this.enrollmentID = enrollmentId;
-    	this.name = name;
     	adress = new Adress(street, city, zipCode);
 //    	this.adress = street;
 //    	this.city = city;
@@ -67,17 +66,15 @@ public class Student
 
 
 	public Student(String enrollmentID, String name) {
-		super();
+		super(name);
 		System.out.println("Constructor called");
 		this.enrollmentID = enrollmentID;
-		this.name = name;
-		System.out.println(this.enrollmentID);
-		System.out.println(this.name);
+
 	}
 
 
 	public Student() {
-		super();
+		super(null);
 	}
 
 
@@ -92,10 +89,10 @@ public class Student
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", enrollmentID=" + enrollmentID + " lives at adress " + 
+		return "Student [id=" +  ", enrollmentID=" + enrollmentID + " lives at adress " + 
 	adress 
 	+
-				", name=" + name 
+				", name=" + super.getName() 
 				+ "]";
 	}
 
@@ -103,16 +100,12 @@ public class Student
 
 	public Student(String name)
     {
-    	this.name = name;
+    	super(name);
     	this.numberOfCourses = 10;
     }
 
 
 
-
-	public Long getId() {
-		return id;
-	}
 
 
 	public String getEnrollmentID() {
@@ -121,17 +114,13 @@ public class Student
 
 
 	public String getName() {
-		return name;
+		return super.getName();
 	}
 
 	public void setEnrollmentID(String enrollmentID) {
 		this.enrollmentID = enrollmentID;
 	}
 
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 
 	@Override
@@ -184,6 +173,17 @@ public class Student
 
 	public void setAdress(Adress adress) {
 		this.adress = adress;
+	}
+
+
+
+
+
+
+	@Override
+	public void getReport() {
+		System.out.println("Report for student: " + this.getName());
+		
 	}
 	
 	

@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import com.yrgo.domain.Person;
 import com.yrgo.domain.Student;
 import com.yrgo.domain.Subject;
 import com.yrgo.domain.Tutor;
@@ -20,7 +21,7 @@ public class HibernateTest
 
 	public static void main(String[] args)
 	{
-		setUpData();
+//		setUpData();
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
@@ -49,9 +50,18 @@ public class HibernateTest
 		
 //		reportQueryOfStudentsAndTutors(em);
 				
-		reportQueryForSemestersPerSubject(em);
+//		reportQueryForSemestersPerSubject(em);
 
-
+		Student newStudent = new Student("1-SVE-2019", "Eva Svensson", "4th Street","Berlin","1010");
+				Tutor newTutor = new Tutor("3333", "Sara Reeves", 30000);
+				em.persist(newStudent);
+				em.persist(newTutor);
+				
+//		List<Person> persons = em.createQuery("from Person").getResultList();
+		List<Student>persons = em.createQuery("from Student").getResultList();
+		for(Person person : persons ) {
+			person.getReport();
+		}
 		
 		tx.commit();
 		em.close();

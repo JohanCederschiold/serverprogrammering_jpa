@@ -8,6 +8,7 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,15 +21,13 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-public class Tutor {
+@DiscriminatorValue(value="T")
+public class Tutor extends Person{
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+
 	
-	@Column(unique = true, nullable = false)
+//	@Column(unique = true, nullable = false)
 	private String tutorId;
-	private String name;
 	private int salary;
 	
 	
@@ -49,11 +48,10 @@ public class Tutor {
 	
 	
 	public Tutor(String tutorId, String name, int salary) {
-		super();
+		super(name);
 		instantiateSets();
 		System.out.println("The set is " + this.students == null);
 		this.tutorId = tutorId;
-		this.name = name;
 		this.salary = salary;
 	}
 
@@ -67,25 +65,16 @@ public class Tutor {
 
 	public Tutor() {
 		
-		super();
+		super(null);
 		instantiateSets();
 	}
 
 
 	@Override
 	public String toString() {
-		return "Tutor [id=" + id + ", tutorId=" + tutorId + ", name=" + name + ", salary=" + salary + "]";
+		return "Tutor [id=" + ", tutorId=" + tutorId + ", name=" + this.getName() + ", salary=" + salary + "]";
 	}
 
-
-	public Long getId() {
-		return id;
-	}
-
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 
 	public String getTutorId() {
@@ -99,12 +88,7 @@ public class Tutor {
 
 
 	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
+		return super.getName();
 	}
 
 
@@ -146,6 +130,12 @@ public class Tutor {
 		student.setTutor(this);
 		this.addStudentToGroup(student);
 
+	}
+
+
+	@Override
+	public void getReport() {
+		System.out.println("Report for tutor: " + this.getName());
 	}
 	
 	
