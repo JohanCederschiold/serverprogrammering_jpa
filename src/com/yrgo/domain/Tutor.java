@@ -25,6 +25,7 @@ import javax.persistence.OneToMany;
 public class Tutor extends Person{
 	
 
+	@Column(unique = true, nullable = false)
 	private String tutorId;
 	private int salary;
 	

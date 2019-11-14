@@ -20,6 +20,7 @@ import javax.persistence.Table;
 public class Student extends Person
 {
 
+	@Column(unique = true, nullable = false)
     private String enrollmentID;
 
     

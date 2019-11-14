@@ -31,8 +31,8 @@ public class HibernateTest
 				em.persist(newStudent);
 				em.persist(newTutor);
 				
-//		List<Person> persons = em.createQuery("from Person").getResultList();
-		List<Student>persons = em.createQuery("from Student").getResultList();
+		List<Person> persons = em.createQuery("from Person").getResultList();
+//		List<Student>persons = em.createQuery("from Student").getResultList();
 		for(Person person : persons ) {
 			person.getReport();
 		}
