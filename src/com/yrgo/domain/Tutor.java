@@ -25,8 +25,6 @@ import javax.persistence.OneToMany;
 public class Tutor extends Person{
 	
 
-	
-//	@Column(unique = true, nullable = false)
 	private String tutorId;
 	private int salary;
 	
@@ -37,16 +35,7 @@ public class Tutor extends Person{
 	@ManyToMany
 	private Set<Subject>subjects;
 	
-//	@OneToMany
-//	@JoinColumn(name="TUTOR_FK")
-//	private Set<Student>students=new HashSet<>();
-	
-//	@OneToMany
-//	@MapKey(name="enrollmentID")
-//	@JoinColumn(name="TUTOR_FK")
-//	private Map<String, Student> students = new HashMap<>();
-	
-	
+		
 	public Tutor(String tutorId, String name, int salary) {
 		super(name);
 		instantiateSets();

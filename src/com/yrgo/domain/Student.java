@@ -16,8 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @DiscriminatorValue(value="S")
-//@Table(name="Tbl_Student")
-//@SecondaryTable(name = "Tbl_Adress")
+
 public class Student extends Person
 {
 
@@ -26,15 +25,7 @@ public class Student extends Person
     
     @Embedded
     private Adress adress;
-    
-//    @Column (table = "Tbl_Adress")
-//    private String adress;
-//    
-//    @Column (table = "Tbl_Adress")
-//    private String city;
-//    
-//    @Column (table = "Tbl_Adress")
-//    private String zipcode;
+   
     
     
     @ManyToOne
@@ -45,19 +36,12 @@ public class Student extends Person
     private Integer numberOfCourses;
 
 
-//    public Student(String name, Tutor tutor)
-//    {
-//    	this.name = name;
-//    	this.tutor = tutor;
-//    }
 
     public Student(String enrollmentId, String name, String street, String city, String zipCode) {
     	super(name);
     	this.enrollmentID = enrollmentId;
     	adress = new Adress(street, city, zipCode);
-//    	this.adress = street;
-//    	this.city = city;
-//    	this.zipcode = zipCode;
+
     }
     
     
@@ -175,32 +159,13 @@ public class Student extends Person
 		this.adress = adress;
 	}
 
-
-
-
-
-
 	@Override
 	public void getReport() {
 		System.out.println("Report for student: " + this.getName());
 		
 	}
 	
-	
 
-
-	
-
-
-//	public void alocateTutor(Tutor tutor) {
-//		this.tutor = tutor;
-//	}
-	
-//	public String getTutorName() {
-//		return this.tutor.getName();
-//	}
-	
-	
 	
 
 }

@@ -21,36 +21,10 @@ public class HibernateTest
 
 	public static void main(String[] args)
 	{
-//		setUpData();
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction tx = em.getTransaction();
 		tx.begin();
 
-//		queryPersistedData(em);
-		
-//		queryAllStudents(em);
-	
-//		queryStudentByName(em);
-		
-//		queryWithLike(em);
-		
-//		queryByDynamicParams(em, "Jimi Hendriks");
-		
-//		printStudentsForTutor(em, 3L);
-		
-//		printTutorsTeachingSubject(em, 1L);
-		
-//		printStudentsWithTutorsTeachingSubject(em, 1L);
-		
-//		useJoins(em, "city 2");
-		
-//		useNamedQueryForStudentName(em, "Jimi Hendriks");
-		
-//		reportQueryOfStudentsNames(em);
-		
-//		reportQueryOfStudentsAndTutors(em);
-				
-//		reportQueryForSemestersPerSubject(em);
 
 		Student newStudent = new Student("1-SVE-2019", "Eva Svensson", "4th Street","Berlin","1010");
 				Tutor newTutor = new Tutor("3333", "Sara Reeves", 30000);
