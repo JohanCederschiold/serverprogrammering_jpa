@@ -9,21 +9,23 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="person_type")
 public abstract class Person {
 	
 	private String name;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private String id;
 	
-	public Person(String name) {
+
+	
+	public Person(String name, String id) {
 		super();
 		this.name = name;
+		this.id = id;
 	}
-	
+
 	public abstract void getReport();
 	
 	public String getName() {

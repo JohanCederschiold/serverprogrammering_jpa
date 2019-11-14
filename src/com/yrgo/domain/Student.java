@@ -39,7 +39,7 @@ public class Student extends Person
 
 
     public Student(String enrollmentId, String name, String street, String city, String zipCode) {
-    	super(name);
+    	super(name, enrollmentId);
     	this.enrollmentID = enrollmentId;
     	adress = new Adress(street, city, zipCode);
 
@@ -51,15 +51,9 @@ public class Student extends Person
 
 
 	public Student(String enrollmentID, String name) {
-		super(name);
+		super(name, enrollmentID);
 		System.out.println("Constructor called");
-		this.enrollmentID = enrollmentID;
 
-	}
-
-
-	public Student() {
-		super(null);
 	}
 
 
@@ -80,18 +74,6 @@ public class Student extends Person
 				", name=" + super.getName() 
 				+ "]";
 	}
-
-
-
-	public Student(String name)
-    {
-    	super(name);
-    	this.numberOfCourses = 10;
-    }
-
-
-
-
 
 	public String getEnrollmentID() {
 		return enrollmentID;

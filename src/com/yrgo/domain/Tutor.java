@@ -38,10 +38,10 @@ public class Tutor extends Person{
 	
 		
 	public Tutor(String tutorId, String name, int salary) {
-		super(name);
+		super(name, tutorId);
+		this.tutorId = tutorId;
 		instantiateSets();
 		System.out.println("The set is " + this.students == null);
-		this.tutorId = tutorId;
 		this.salary = salary;
 	}
 
@@ -55,7 +55,7 @@ public class Tutor extends Person{
 
 	public Tutor() {
 		
-		super(null);
+		super(null, null);
 		instantiateSets();
 	}
 
