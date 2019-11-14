@@ -41,11 +41,58 @@ public class HibernateTest
 		
 //		printStudentsWithTutorsTeachingSubject(em, 1L);
 		
-		useJoins(em, "city 2");
+//		useJoins(em, "city 2");
 		
+//		useNamedQueryForStudentName(em, "Jimi Hendriks");
+		
+//		reportQueryOfStudentsNames(em);
+		
+//		reportQueryOfStudentsAndTutors(em);
+				
+		reportQueryForSemestersPerSubject(em);
+
+
 		
 		tx.commit();
 		em.close();
+	}
+
+
+	private static void reportQueryForSemestersPerSubject(EntityManager em) {
+		
+		double average = (double) em.createQuery("select avg(subject.numberOfSemesters) from Subject "
+				+ "as subject").getSingleResult();
+		
+		System.out.println(average);
+	}
+
+
+	private static void reportQueryOfStudentsAndTutors(EntityManager em) {
+		List<Object[]> studentsAndTutors = em.createQuery("select student.name, student.tutor from "
+				+ "Student as student").getResultList();
+		
+		for (Object[] objects : studentsAndTutors) {
+			System.out.println(objects[0] + " is tutored by " + objects[1]);
+		}
+	}
+
+
+	private static void reportQueryOfStudentsNames(EntityManager em) {
+		List<String> studentNames = em.createQuery("select student.name from Student as student").getResultList();
+		for (String string : studentNames) {
+			System.out.println(string);
+		}
+	}
+
+
+	private static void useNamedQueryForStudentName(EntityManager em, String name) {
+		List<Student> students = em.createNamedQuery("searchByName")
+				.setParameter("name", name)
+				.getResultList();
+		
+		for (Student student : students ) {
+			System.out.println(student);
+		}
 	}
 	
 	
