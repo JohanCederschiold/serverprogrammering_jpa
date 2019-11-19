@@ -32,7 +32,7 @@ public class Tutor {
 	private int salary;
 	
 	
-	@OneToMany(mappedBy = "tutor", cascade = CascadeType.PERSIST)
+	@OneToMany(mappedBy = "tutor", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 	private Set<Student>students;
 	
 	@ManyToMany
@@ -110,6 +110,10 @@ public class Tutor {
 
 	public int getSalary() {
 		return salary;
+	}
+	
+	public void doubleSalary() {
+		this.salary *= 2;
 	}
 
 

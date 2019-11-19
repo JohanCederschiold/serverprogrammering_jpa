@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
 import com.yrgo.domain.Student;
 import com.yrgo.domain.Subject;
 import com.yrgo.domain.Tutor;
+import com.yrgo.services.TutorService;
 
 public class HibernateTest 
 {
@@ -20,44 +21,14 @@ public class HibernateTest
 
 	public static void main(String[] args)
 	{
-		setUpData();
-		EntityManager em = emf.createEntityManager();
-		EntityTransaction tx = em.getTransaction();
-		tx.begin();
 
-//		queryPersistedData(em);
+		TutorService service = new TutorService();
+		Tutor coolTutor = service.createNewTutor("bob105", "Bob", 900998);
+		coolTutor.addStudentToGroup(new Student("lala123", "Hamsterdance"));
+		coolTutor.addStudentToGroup(new Student("lala124", "Lobsterdance"));
+		service.updateTutor(coolTutor);
 		
-//		queryAllStudents(em);
-	
-//		queryStudentByName(em);
 		
-//		queryWithLike(em);
-		
-//		queryByDynamicParams(em, "Jimi Hendriks");
-		
-//		printStudentsForTutor(em, 3L);
-		
-//		printTutorsTeachingSubject(em, 1L);
-		
-//		printStudentsWithTutorsTeachingSubject(em, 1L);
-		
-//		useJoins(em, "city 2");
-		
-//		useNamedQueryForStudentName(em, "Jimi Hendriks");
-		
-//		reportQueryOfStudentsNames(em);
-		
-//		reportQueryOfStudentsAndTutors(em);
-				
-//		reportQueryForSemestersPerSubject(em);
-
-		List<Object[]> result = em.createNativeQuery("select s.name, s.enrollmentId from Student s").getResultList();
-		for (Object [] obj: result ) {
-			System.out.println(obj[0] + " : " + obj[1]);
-		}
- 		
-		tx.commit();
-		em.close();
 	}
 
 
