@@ -14,7 +14,6 @@ import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Tbl_Student")
 //@SecondaryTable(name = "Tbl_Adress")
 public class Student
 {

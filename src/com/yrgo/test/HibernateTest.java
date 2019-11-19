@@ -49,10 +49,13 @@ public class HibernateTest
 		
 //		reportQueryOfStudentsAndTutors(em);
 				
-		reportQueryForSemestersPerSubject(em);
+//		reportQueryForSemestersPerSubject(em);
 
-
-		
+		List<Object[]> result = em.createNativeQuery("select s.name, s.enrollmentId from Student s").getResultList();
+		for (Object [] obj: result ) {
+			System.out.println(obj[0] + " : " + obj[1]);
+		}
+ 		
 		tx.commit();
 		em.close();
 	}
